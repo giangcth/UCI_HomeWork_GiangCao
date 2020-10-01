@@ -42,6 +42,7 @@ with open(PyPoll_csv, 'r') as csvfile:
         percentcandidate.append(percent)
 
 roster=zip(candidates, percentcandidate, countcandidate)
+roster2=zip(candidates, percentcandidate, countcandidate)
 
 maxpercent = max(percentcandidate)
 winnerindex =percentcandidate.index(maxpercent)
@@ -63,25 +64,24 @@ print(f"-----------------------------------------------")
 
 # Write the output file
 
-output_PyBank = os.path.join("PyBank.txt")
+output_PyBank = os.path.join("PyPoll.txt")
 
 with open(output_PyBank, "w") as txtfile:
 
-    txtfile.write(f"ELECTION RESULTS \n"),
-    txtfile.write(f"------------------------------------------------------------- \n"),
+    txtfile.write(f"ELECTION RESULTS \n")
+    txtfile.write(f"------------------------------------------------------------- \n")
     txtfile.write("Total Votes: " + str(totalvoters) + " \n")
     
-    roster_string = [f'{key} : {roster[key]}' for key in roster]
-    for st in roster_string:
-        txtfile.writelines(f'{st}\n'),
-
-    txtfile.write(f"------------------------------------------------------------- \n"),
+    for c, p, o in roster2:
+        txtfile.write(f'{c} : {p} % ({o}) \n')
     
-    txtfile.write("The Winner: " + str(winner)+ " \n"),
+    txtfile.write(f"------------------------------------------------------------- \n")
+    
+    txtfile.write("The Winner: " + str(winner)+ " \n")
     
     txtfile.write(f"------------------------------------------------------------- \n")
 
-txtfile.write.close()  
+
    
 
  						
