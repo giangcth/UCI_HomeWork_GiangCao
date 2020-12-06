@@ -67,8 +67,8 @@ def scrape():
     # MARS FACTS
     url3 = 'https://space-facts.com/mars/#content/tablepress-comp-mars'
     table = pd.read_html(url3)[0]
-    table.columns = ["Facts","Values"]
-    clean_table = table.set_index(["Facts"])
+    table.columns = ["Description","Mars"]
+    clean_table = table.set_index(["Description"])
     mars_table = clean_table.to_html()
     mars_table = mars_table.replace("\n", "")
     
